@@ -3,17 +3,17 @@
 <head>
 	<meta charset="UFC-8">
 	<title>Yoshi Battle!</title>
-	<link href="https://fonts.googleapis.com/css?family=Griffy" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
-	<h1>Yoshi Battle!</h1>
+	<h1>Yoshi Battle!<br><span id="playagain"></span><br><img id="gif" src=""></h1>
 	<div id="pickcharacters">
-		<span id="char1">Red Yoshi<br><img class="yoshi" src="assets/images/redyoshi.png"><br><span id="hp1">150</span></span>
-		<span id="char2">Blue Yoshi<br><img class="yoshi" src="assets/images/blueyoshi.png"><br><span id="hp2">100</span></span>
-		<span id="char3">Yellow Yoshi<br><img class="yoshi" src="assets/images/yellowyoshi.png"><br><span id="hp3">110</span></span>
-		<span id="char4">Green Yoshi<br><img class="yoshi" src="assets/images/greenyoshi.png"><br><span id="hp4">125</span></span>
+		<span id="char1"><span class="name">Red Yoshi</span><br><img class="yoshi" src="assets/images/redyoshi.png"><br><span class="hp">150</span></span>
+		<span id="char2"><span class="name">Blue Yoshi</span><br><img class="yoshi" src="assets/images/blueyoshi.png"><br><span class="hp">100</span></span>
+		<span id="char3"><span class="name">Yellow Yoshi</span><br><img class="yoshi" src="assets/images/yellowyoshi.png"><br><span class="hp">110</span></span>
+		<span id="char4"><span class="name">Green Yoshi</span><br><img class="yoshi" src="assets/images/greenyoshi.png"><br><span class="hp">125</span></span>
 	</div>
 	<br>
 	<h2>Your Character</h2>
@@ -27,6 +27,16 @@
 	<button type="button" id="attack">Attack!</button>
 	<h2>Defender</h2>
 	<span id="defender"></span>
+	<br>
+	<h3></h3>
+	<br>
+	<h4></h4>
+	<audio controls autoplay id="song">
+		<source src="assets/music/song.mp3">
+	</audio>
+	<audio id="yoshisound">
+		<source src="assets/sounds/yoshi.mp3">
+	<audio>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="assets/javascript/game.js"></script>

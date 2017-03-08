@@ -1,3 +1,14 @@
+var song = document.getElementById("song");
+song.volume = .05;
+song.loop = true;
+
+var yoshisound = document.getElementById("yoshisound");
+yoshisound.volume = .1;
+
+var yrdamage = 0;
+var yrdamagebase = 0;
+var wins = 0;
+
 $("#char1").click(function() {
 	$("#yrchar").append($("#char1"));
 	$("#enemy1").append($("#char2"));
@@ -6,6 +17,11 @@ $("#char1").click(function() {
 	$("#char2").css("border-color", "red");
 	$("#char3").css("border-color", "red");
 	$("#char4").css("border-color", "red");
+	$("#char1").unbind();
+	$("#char2").unbind();
+	$("#char3").unbind();
+	$("#char4").unbind();
+	yrdamagebase = 8;
 });
 
 $("#char2").click(function() {
@@ -16,6 +32,11 @@ $("#char2").click(function() {
 	$("#char1").css("border-color", "red");
 	$("#char3").css("border-color", "red");
 	$("#char4").css("border-color", "red");
+	$("#char1").unbind();
+	$("#char2").unbind();
+	$("#char3").unbind();
+	$("#char4").unbind();
+	yrdamagebase = 5;
 });
 
 $("#char3").click(function() {
@@ -26,6 +47,11 @@ $("#char3").click(function() {
 	$("#char1").css("border-color", "red");
 	$("#char2").css("border-color", "red");
 	$("#char4").css("border-color", "red");
+	$("#char1").unbind();
+	$("#char2").unbind();
+	$("#char3").unbind();
+	$("#char4").unbind();
+	yrdamagebase = 20;
 });
 
 $("#char4").click(function() {
@@ -36,4 +62,99 @@ $("#char4").click(function() {
 	$("#char1").css("border-color", "red");
 	$("#char2").css("border-color", "red");
 	$("#char3").css("border-color", "red");
+	$("#char1").unbind();
+	$("#char2").unbind();
+	$("#char3").unbind();
+	$("#char4").unbind();
+	yrdamagebase = 15;
 });
+
+$("#enemy1").click(function (){
+	$("#defender").append($("#enemy1"));
+	$("#enemy1").unbind();
+	$("#enemy2").unbind();
+	$("#enemy3").unbind();
+	$("#attack").click(function() {game()});
+});
+
+$("#enemy2").click(function (){
+	$("#defender").append($("#enemy2"));
+	$("#enemy1").unbind();
+	$("#enemy2").unbind();
+	$("#enemy3").unbind();
+	$("#attack").click(function() {game()});
+});
+
+$("#enemy3").click(function (){
+	$("#defender").append($("#enemy3"));
+	$("#enemy1").unbind();
+	$("#enemy2").unbind();
+	$("#enemy3").unbind();
+	$("#attack").click(function() {game()});
+});
+
+function game() {
+	yoshisound.play();
+	yrdamage = yrdamage + yrdamagebase;
+	$("#defender .hp").text($("#defender .hp").text() - yrdamage);
+	$("h3").text("You did " + yrdamage + " damage!");
+	if ($("#defender .hp").text() <= 0 && wins == 2) {
+		$("h4").text("You defeated all the enemies! You are the best Yoshi!");
+		$("#attack").unbind();
+		$("#playagain").text("Click here to play again!");
+		$("#gif").attr("src", "assets/images/yoshieatsmario.gif");
+		$("#playagain").click(function () {location.reload();});
+		$("#gif").click(function () {location.reload();});
+	}
+	else if ($("#defender .hp").text() <= 0) {
+		$("h4").text("You defeated " + $("#defender .name").text() + "! Pick another foe!");
+		wins++;
+		$("#attack").unbind();
+			$("#enemy1").click(function (){
+				$("#defender").html($("#enemy1"));
+				$("#enemy1").unbind();
+				$("#enemy2").unbind();
+				$("#enemy3").unbind();
+				$("#attack").click(function() {game()});
+			});
+
+			$("#enemy2").click(function (){
+				$("#defender").html($("#enemy2"));
+				$("#enemy1").unbind();
+				$("#enemy2").unbind();
+				$("#enemy3").unbind();
+				$("#attack").click(function() {game()});
+			});
+
+			$("#enemy3").click(function (){
+				$("#defender").html($("#enemy3"));
+				$("#enemy1").unbind();
+				$("#enemy2").unbind();
+				$("#enemy3").unbind();
+				$("#attack").click(function() {game()});
+			});
+	}
+	else if ($("#defender .name").text() == "Red Yoshi") {
+		$("#yrchar .hp").text($("#yrchar .hp").text() - 8);
+		$("h4").text("Red Yoshi attacked you with 8 damage!");
+	}
+	else if ($("#defender .name").text() == "Blue Yoshi") {
+		$("#yrchar .hp").text($("#yrchar .hp").text() - 5);
+		$("h4").text("Blue Yoshi attacked you with 5 damage!");
+	}
+	else if ($("#defender .name").text() == "Yellow Yoshi") {
+		$("#yrchar .hp").text($("#yrchar .hp").text() - 20);
+		$("h4").text("Yellow Yoshi attacked you with 20 damage!");
+	}
+	else if ($("#defender .name").text() == "Green Yoshi") {
+		$("#yrchar .hp").text($("#yrchar .hp").text() - 15);
+		$("h4").text("Green Yoshi attacked you with 15 damage!");
+	}
+	if ($("#yrchar .hp").text() <= 0) {
+		$("h3").text("You lost! You are the worst Yoshi!");
+		$("#playagain").text("Click here to play again!");
+		$("#gif").attr("src", "assets/images/yoshieatsmario.gif");
+		$("#playagain").click(function () {location.reload();});
+		$("#gif").click(function () {location.reload();});
+	}
+}
