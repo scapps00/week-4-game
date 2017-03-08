@@ -99,6 +99,7 @@ function game() {
 	$("#defender .hp").text($("#defender .hp").text() - yrdamage);
 	$("h3").text("You did " + yrdamage + " damage!");
 	if ($("#defender .hp").text() <= 0 && wins == 2) {
+		$("#defender .hp").text(0);
 		$("h4").text("You defeated all the enemies! You are the best Yoshi!");
 		$("#attack").unbind();
 		$("#playagain").text("Click here to play again!");
@@ -107,6 +108,7 @@ function game() {
 		$("#gif").click(function () {location.reload();});
 	}
 	else if ($("#defender .hp").text() <= 0) {
+		$("#defender .hp").text(0);
 		$("h4").text("You defeated " + $("#defender .name").text() + "! Pick another foe!");
 		wins++;
 		$("#attack").unbind();
@@ -151,10 +153,12 @@ function game() {
 		$("h4").text("Green Yoshi attacked you with 15 damage!");
 	}
 	if ($("#yrchar .hp").text() <= 0) {
+		$("#yrchar .hp").text(0);
 		$("h3").text("You lost! You are the worst Yoshi!");
 		$("#playagain").text("Click here to play again!");
 		$("#gif").attr("src", "assets/images/yoshieatsmario.gif");
 		$("#playagain").click(function () {location.reload();});
 		$("#gif").click(function () {location.reload();});
+		$("#attack").unbind();
 	}
 }
