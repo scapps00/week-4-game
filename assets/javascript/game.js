@@ -36,7 +36,7 @@ $("#char2").click(function() {
 	$("#char2").unbind();
 	$("#char3").unbind();
 	$("#char4").unbind();
-	yrdamagebase = 5;
+	yrdamagebase = 10;
 });
 
 $("#char3").click(function() {
@@ -137,20 +137,20 @@ function game() {
 			});
 	}
 	else if ($("#defender .name").text() == "Red Yoshi") {
-		$("#yrchar .hp").text($("#yrchar .hp").text() - 8);
-		$("h4").text("Red Yoshi attacked you with 8 damage!");
+		$("#yrchar .hp").text($("#yrchar .hp").text() - 10);
+		$("h4").text("Red Yoshi attacked you with 10 damage!");
 	}
 	else if ($("#defender .name").text() == "Blue Yoshi") {
-		$("#yrchar .hp").text($("#yrchar .hp").text() - 5);
-		$("h4").text("Blue Yoshi attacked you with 5 damage!");
+		$("#yrchar .hp").text($("#yrchar .hp").text() - 7);
+		$("h4").text("Blue Yoshi attacked you with 7 damage!");
 	}
 	else if ($("#defender .name").text() == "Yellow Yoshi") {
-		$("#yrchar .hp").text($("#yrchar .hp").text() - 20);
-		$("h4").text("Yellow Yoshi attacked you with 20 damage!");
+		$("#yrchar .hp").text($("#yrchar .hp").text() - 19);
+		$("h4").text("Yellow Yoshi attacked you with 19 damage!");
 	}
 	else if ($("#defender .name").text() == "Green Yoshi") {
-		$("#yrchar .hp").text($("#yrchar .hp").text() - 15);
-		$("h4").text("Green Yoshi attacked you with 15 damage!");
+		$("#yrchar .hp").text($("#yrchar .hp").text() - 16);
+		$("h4").text("Green Yoshi attacked you with 16 damage!");
 	}
 	if ($("#yrchar .hp").text() <= 0) {
 		$("#yrchar .hp").text(0);
