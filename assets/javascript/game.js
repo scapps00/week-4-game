@@ -1,14 +1,18 @@
+//set up music
 var song = document.getElementById("song");
 song.volume = .05;
 song.loop = true;
 
+//set up the sound Yoshi makes
 var yoshisound = document.getElementById("yoshisound");
 yoshisound.volume = .1;
 
+//set baseline stats
 var yrdamage = 0;
 var yrdamagebase = 0;
 var wins = 0;
 
+//set what happens when a Yoshi is clicked - the clicked Yoshi becomes yrchar and the others become enemies
 $("#char1").click(function() {
 	$("#yrchar").append($("#char1"));
 	$("#enemy1").append($("#char2"));
@@ -69,6 +73,7 @@ $("#char4").click(function() {
 	yrdamagebase = 15;
 });
 
+//sets what happens when an enemy is clicked - the battle begins and the clicked Yoshi becomes defender and the other enemies become unclickable
 $("#enemy1").click(function (){
 	$("#defender").append($("#enemy1"));
 	$("#enemy1").unbind();
@@ -93,6 +98,7 @@ $("#enemy3").click(function (){
 	$("#attack").click(function() {game()});
 });
 
+//sets the game starting
 function game() {
 	yoshisound.play();
 	yrdamage = yrdamage + yrdamagebase;
